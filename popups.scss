@@ -1,0 +1,123 @@
+//----------------------------------------------
+//  Pop Overs
+//  PopUp styles for our popups.js
+//  Supports all kinds of shit, modals, full screen johns,
+//  full viewport vimeo vid, etc.
+//----------------------------------------------
+$mq-med: 32em;
+$z-popup: 91;
+
+.popup{
+  z-index: -2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  color: #fff;
+  background: rgba(#000, 0.95);
+  transition: opacity 1s ease;
+
+  // Vid wrapper
+  &__vid {
+    width: 95%;
+    max-width: 60em;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+  }
+}
+
+//----------------------------------------------
+//  Opening animation
+//----------------------------------------------
+.popup-is-opening,
+.popup-is-open {
+
+  .popup.is-open {
+    z-index: $z-popup !important;
+    display: flex !important;
+    opacity: 1;
+    transition: opacity 1s ease;
+    animation: fade-in 1s ease both;
+  }
+
+  // Reset Main's transform to prevent webkit wierdness
+  // update to page wrap if that's not a main tag
+  main {
+    transform: none;
+    backface-visibility: hidden;
+  }
+}
+
+// Prevent scrolling when active
+html.popup-is-open {
+  overflow: hidden
+}
+
+//----------------------------------------------
+//  Closing Animation
+//----------------------------------------------
+.popup-is-closing .popup.is-open {
+  animation: fade-out 1s ease both;
+}
+
+//----------------------------------------------
+//  Close X
+//----------------------------------------------
+.popup__close {
+  z-index: 999;
+  position:fixed !important;
+  top: 1em;
+  right: 1em;
+  height: 3rem;
+  width: 2rem;
+  backface-visibility: hidden;
+  animation: fade-in 1.5s 1s ease both;
+
+  @media (max-width: $mq-med){
+    padding: 2em;
+  }
+
+  &:active{
+    border: none;
+  }
+}
+
+//----------------------------------------------
+//  Pop Up Link
+//  Vimeo Pop Up links added via shortcode
+//----------------------------------------------
+.popup-link {
+  // icon font
+  i, &__icon {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.2em;
+    font-size: 2em;
+  }
+}
+
+
+//----------------------------------------------
+// Keyframe Animations
+//----------------------------------------------
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
