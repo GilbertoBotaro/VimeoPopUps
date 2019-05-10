@@ -53,3 +53,11 @@ You gonna need some styles.
 `_popups.scss` has some styles.
 
 Handles the actual popup stuff.
+
+
+### Wp Shortcode
+
+Sure, why not. `shortcode.php` is a simple Wp shortcode that builds out the link for the popups.
+Go ham.
+
+Thanks for reading....
