@@ -1,26 +1,19 @@
-
 /**
  * VimeoPopUps
- * Links to build a popup with vimeo vid (via api request)
+ * Links that call a popup with vimeo vid (via api request)
  * Just pass vimeo id
  * @example <a data-vimeo-popup="333916706">Watch Video</a>
  */
- /**
-  * VimeoPopUps
-  * Links that call a popup with vimeo vid (via api request)
-  * Just pass vimeo id
-  * @example <a data-vimeo-popup="333916706">Watch Video</a>
-  */
  function VimeoPopUps() {
    this.html = document.querySelector('html')
    this.popUpLinks = document.querySelectorAll('[data-vimeo-popup]')
    this.isOpen = false
  }
 
- /**
-  * VimeoPopUps Methods
-  * @class VimeoPopUps
-  */
+/**
+ * VimeoPopUps Methods
+ * @class VimeoPopUps
+ */
 VimeoPopUps.prototype = {
   constructor : VimeoPopUps,
 
