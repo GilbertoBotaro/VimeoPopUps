@@ -5,7 +5,7 @@
 //  full viewport vimeo vid, etc.
 //----------------------------------------------
 $mq-med: 32em;
-$z-popup: 91;
+$z-popup:  91;
 
 .popup{
   z-index: -2;
@@ -26,13 +26,22 @@ $z-popup: 91;
 
   // Vid wrapper
   &__vid {
+    position:relative;
     width: 95%;
     max-width: 60em;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     margin: 0 auto;
+    height: 0;
+    padding-bottom: 56.5%;
+    overflow: hidden;
+
+    iframe,
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -80,6 +89,8 @@ html.popup-is-open {
   right: 1em;
   height: 3rem;
   width: 2rem;
+  background: transparent;
+  border: 0;
   backface-visibility: hidden;
   animation: fade-in 1.5s 1s ease both;
 
@@ -89,6 +100,42 @@ html.popup-is-open {
 
   &:active{
     border: none;
+  }
+}
+
+//----------------------------------------------
+//  Close X Icon
+//----------------------------------------------
+.close-x{
+  z-index: 99;
+  position: relative;
+  display: block;
+
+  &:hover{
+    cursor: pointer;
+  }
+
+  &:after, &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0 !important;
+    width: 1.855555rem;
+    height: 1px;
+    display: block;
+    background: #fff;
+    transition: background-color 0.4s ease-in-out;
+
+    // Dark modifier
+    .close-x.is-dark & {
+      background-color: #111;
+    }
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before {
+    transform: rotate(-45deg);
   }
 }
 
@@ -107,8 +154,7 @@ html.popup-is-open {
     font-size: 2em;
   }
 }
-
-
+``
 //----------------------------------------------
 // Keyframe Animations
 //----------------------------------------------
